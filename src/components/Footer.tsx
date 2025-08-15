@@ -38,8 +38,8 @@ export const Footer = () => {
             <h4 className="font-semibold text-background">Связаться</h4>
             <div className="space-y-2 text-sm text-background/80">
               <p>📧 hello@vuella.ru</p>
-              <p>📱 +7 (999) 123-45-67</p>
-              <p>📍 Москва, Россия</p>
+              <p>💬 @vuella_music</p>
+              <p>📍 Санкт-Петербург, Россия</p>
             </div>
           </div>
         </div>
@@ -51,9 +51,12 @@ export const Footer = () => {
             <span>Создано с любовью Vuella © 2025</span>
           </div>
           
-          <div className="flex space-x-4 text-sm text-background/80">
-            <a href="#" className="hover:text-background transition-colors">Политика конфиденциальности</a>
-            <a href="#" className="hover:text-background transition-colors">Условия использования</a>
+          <div className="flex space-x-6 text-background/80">
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-background transition-colors text-xl">📺</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-background transition-colors text-xl">📷</a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:text-background transition-colors text-xl">🎵</a>
+            <a href="https://vk.com" target="_blank" rel="noopener noreferrer" className="hover:text-background transition-colors text-xl">🌐</a>
+            <a href="https://t.me/vuella_music" target="_blank" rel="noopener noreferrer" className="hover:text-background transition-colors text-xl">💬</a>
           </div>
         </div>
       </div>

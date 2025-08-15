@@ -22,7 +22,7 @@ export const MusicSection = () => {
                     <span className="text-3xl text-primary-foreground">▶️</span>
                   </div>
                   <p className="text-lg font-semibold text-foreground">
-                    Последняя песня Vuella
+                    Последний релиз Vuella
                   </p>
                   <p className="text-sm text-muted-foreground">
                     Нажмите для просмотра на YouTube
@@ -32,30 +32,24 @@ export const MusicSection = () => {
             </div>
           </div>
 
-          {/* Video Thumbnails Grid */}
-          <div className="grid md:grid-cols-4 gap-6 mb-8">
-            {[
-              { title: "Первая песня", duration: "3:24" },
-              { title: "Акустическая версия", duration: "4:12" },
-              { title: "За кулисами", duration: "2:45" },
-              { title: "Живое выступление", duration: "5:18" }
-            ].map((video, index) => (
-              <div key={index} className="group cursor-pointer">
-                <div className="aspect-video bg-card rounded-lg shadow-md overflow-hidden border border-border/20 group-hover:shadow-lg transition-all duration-300 group-hover:scale-[1.02]">
-                  <div className="h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center relative">
-                    <div className="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                      {video.duration}
-                    </div>
-                    <div className="w-12 h-12 bg-primary/80 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <span className="text-white">▶️</span>
-                    </div>
-                  </div>
-                </div>
-                <p className="mt-2 text-sm font-medium text-center group-hover:text-primary transition-colors">
-                  {video.title}
-                </p>
+          {/* Live Stream Info */}
+          <div className="bg-card rounded-xl p-6 shadow-lego border border-border/20 mb-8 max-w-2xl mx-auto">
+            <div className="text-center space-y-4">
+              <div className="flex items-center justify-center space-x-2 text-primary">
+                <span className="text-2xl">📺</span>
+                <h3 className="text-xl font-bold">Прямые эфиры</h3>
+                <span className="text-2xl">🎵</span>
               </div>
-            ))}
+              <p className="text-lg text-foreground font-semibold">
+                Каждый день с понедельника по пятницу
+              </p>
+              <p className="text-2xl font-bold text-primary">
+                19:30 МСК
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Новые песни, живое общение и музыкальные импровизации
+              </p>
+            </div>
           </div>
 
           {/* CTA */}

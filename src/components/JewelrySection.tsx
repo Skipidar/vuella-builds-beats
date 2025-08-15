@@ -1,46 +1,84 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useState } from "react";
 import redEarrings from "@/assets/red-earrings.jpg";
 import bluePendant from "@/assets/blue-pendant.jpg";
 import yellowKeychain from "@/assets/yellow-keychain.jpg";
 import jewelryCollection from "@/assets/lego-jewelry-collection.jpg";
 
-const products = [
+const categories = [
   {
     id: 1,
-    name: "Красные серьги LEGO",
-    price: "1 500 ₽",
+    name: "Серьги",
     image: redEarrings,
-    description: "Яркие красные серьги из оригинальных деталей LEGO",
-    color: "bg-primary"
+    description: "Стильные серьги из LEGO деталей",
+    color: "bg-primary",
+    itemCount: 12
   },
   {
     id: 2,
-    name: "Синяя подвеска LEGO",
-    price: "2 000 ₽",
+    name: "Подвески",
     image: bluePendant,
-    description: "Стильная подвеска с синими LEGO кубиками",
-    color: "bg-secondary"
+    description: "Уникальные подвески с LEGO элементами",
+    color: "bg-secondary",
+    itemCount: 8
   },
   {
     id: 3,
-    name: "Жёлтый брелок LEGO",
-    price: "800 ₽",
-    image: yellowKeychain,
-    description: "Весёлый брелок из жёлтых деталей LEGO",
-    color: "bg-accent"
+    name: "Браслеты",
+    image: jewelryCollection,
+    description: "Креативные браслеты из LEGO кубиков",
+    color: "bg-accent",
+    itemCount: 6
   },
   {
     id: 4,
-    name: "Набор украшений",
-    price: "3 500 ₽",
-    image: jewelryCollection,
-    description: "Комплект из серёг, подвески и брелока",
-    color: "bg-gradient-lego"
+    name: "Брелоки",
+    image: yellowKeychain,
+    description: "Весёлые брелоки из цветных деталей",
+    color: "bg-gradient-lego",
+    itemCount: 15
+  }
+];
+
+const testimonials = [
+  {
+    id: 1,
+    text: "Эти LEGO серьги такие уникальные! Обожаю стиль Vuella!",
+    author: "Анна К.",
+    rating: 5
+  },
+  {
+    id: 2,
+    text: "Подвеска просто невероятная! Очень качественная работа!",
+    author: "Мария П.",
+    rating: 5
+  },
+  {
+    id: 3,
+    text: "Браслет получился даже красивее, чем на фото! Спасибо!",
+    author: "Елена С.",
+    rating: 5
+  },
+  {
+    id: 4,
+    text: "Заказала набор - все в восторге! Необычно и стильно!",
+    author: "Дарья В.",
+    rating: 5
   }
 ];
 
 export const JewelrySection = () => {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
   return (
     <section id="jewelry" className="py-20 bg-background">
       <div className="section-container">
@@ -53,61 +91,82 @@ export const JewelrySection = () => {
           </p>
         </div>
 
-        {/* Products Grid */}
+        {/* Categories Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {products.map((product, index) => (
-            <Card key={product.id} className="product-card group" style={{ animationDelay: `${index * 0.1}s` }}>
-              {/* Product Image */}
+          {categories.map((category, index) => (
+            <Card key={category.id} className="product-card group cursor-pointer" style={{ animationDelay: `${index * 0.1}s` }}>
+              {/* Category Image */}
               <div className="relative overflow-hidden rounded-lg mb-4">
-                <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity ${product.color} rounded-lg`}></div>
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity ${category.color} rounded-lg`}></div>
                 <img
-                  src={product.image}
-                  alt={product.name}
+                  src={category.image}
+                  alt={category.name}
                   className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110 rounded-lg"
                 />
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-6 h-6 bg-white/90 rounded-full flex items-center justify-center">
-                    <span className="text-xs">❤️</span>
-                  </div>
+                <div className="absolute top-3 right-3 bg-white/90 text-foreground px-2 py-1 rounded-full text-xs font-semibold">
+                  {category.itemCount} шт.
                 </div>
               </div>
 
-              {/* Product Info */}
+              {/* Category Info */}
               <div className="space-y-3">
                 <h3 className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
-                  {product.name}
+                  {category.name}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  {product.description}
+                  {category.description}
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold text-primary">
-                    {product.price}
-                  </span>
-                  <Button 
-                    size="sm" 
-                    className="btn-accent opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
-                  >
-                    Купить
-                  </Button>
-                </div>
+                <Button 
+                  className="btn-accent w-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
+                >
+                  Смотреть все
+                </Button>
               </div>
             </Card>
           ))}
         </div>
 
-        {/* Testimonial */}
-        <div className="bg-card rounded-2xl p-8 shadow-lego border border-border/20 max-w-2xl mx-auto mb-8">
+        {/* Testimonials */}
+        <div className="bg-card rounded-2xl p-8 shadow-lego border border-border/20 max-w-2xl mx-auto mb-8 relative">
           <div className="text-center space-y-4">
             <div className="flex justify-center space-x-1 text-accent text-xl">
-              ⭐⭐⭐⭐⭐
+              {Array.from({ length: testimonials[currentTestimonial].rating }, (_, i) => (
+                <span key={i}>⭐</span>
+              ))}
             </div>
             <blockquote className="text-lg italic text-muted-foreground">
-              "Эти LEGO серьги такие уникальные! Обожаю стиль Vuella!"
+              "{testimonials[currentTestimonial].text}"
             </blockquote>
             <cite className="text-sm font-medium text-foreground">
-              — Анна К., счастливая покупательница
+              — {testimonials[currentTestimonial].author}, счастливая покупательница
             </cite>
+          </div>
+          
+          {/* Navigation buttons */}
+          <button
+            onClick={prevTestimonial}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center transition-colors"
+          >
+            <span className="text-primary">←</span>
+          </button>
+          <button
+            onClick={nextTestimonial}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center transition-colors"
+          >
+            <span className="text-primary">→</span>
+          </button>
+          
+          {/* Dots indicator */}
+          <div className="flex justify-center space-x-2 mt-6">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentTestimonial(index)}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  index === currentTestimonial ? 'bg-primary' : 'bg-muted-foreground/30'
+                }`}
+              />
+            ))}
           </div>
         </div>
 

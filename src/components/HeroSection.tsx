@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/vuella-hero.jpg";
+import heroImage from "/lovable-uploads/aba9f26d-589e-4ef5-87bd-c0c3133123f6.png";
 
 export const HeroSection = () => {
   return (
@@ -50,8 +50,8 @@ export const HeroSection = () => {
               <div className="absolute -inset-4 bg-gradient-lego rounded-3xl opacity-30 blur-xl transition-all duration-500 group-hover:opacity-50 group-hover:blur-2xl"></div>
               <img
                 src={heroImage}
-                alt="Vuella - певица-автор песен с LEGO украшениями"
-                className="relative rounded-2xl shadow-2xl w-full max-w-lg mx-auto transition-transform duration-500 hover:scale-105"
+                alt="Vuella - певица-автор песен с LEGO украшениями и короной"
+                className="relative rounded-2xl shadow-2xl w-full max-w-lg mx-auto transition-transform duration-500 hover:scale-105 object-cover aspect-square"
               />
             </div>
           </div>
