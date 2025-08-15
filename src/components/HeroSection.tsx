@@ -26,7 +26,7 @@ export const HeroSection = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-16 lg:justify-center lg:ml-12">
               <Button 
                 onClick={() => document.getElementById('music')?.scrollIntoView({ behavior: 'smooth' })}
                 className="btn-hero group"

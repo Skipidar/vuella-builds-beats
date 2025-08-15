@@ -125,15 +125,24 @@
 @layer components {
   /* Hero Button Variants */
   .btn-hero {
-    @apply bg-primary text-primary-foreground px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_35px_-10px_hsl(var(--primary)/0.4)] active:scale-95;
+    @apply relative px-8 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lego text-white overflow-hidden;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)));
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease-in-out infinite;
   }
 
   .btn-hero-secondary {
-    @apply bg-secondary text-secondary-foreground px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_35px_-10px_hsl(var(--secondary)/0.4)] active:scale-95;
+    @apply relative px-8 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 text-white overflow-hidden;
+    background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)), hsl(var(--secondary)));
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease-in-out infinite reverse;
   }
 
   .btn-accent {
-    @apply bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_25px_-8px_hsl(var(--accent)/0.4)] active:scale-95;
+    @apply relative px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 text-white;
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)), hsl(var(--primary)));
+    background-size: 200% auto;
+    animation: gradient-shift 4s ease-in-out infinite;
   }
 
   /* LEGO Brick Effect */
@@ -261,5 +270,14 @@
   100% {
     transform: translateY(0) scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }
