@@ -28,11 +28,18 @@ export const HeroSection = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button 
-                onClick={() => window.open('https://youtube.com', '_blank')}
+                onClick={() => document.getElementById('music')?.scrollIntoView({ behavior: 'smooth' })}
                 className="btn-hero group"
               >
                 🎵 Слушать мою музыку
                 <span className="ml-2 transition-transform group-hover:scale-110">▶️</span>
+              </Button>
+              <Button 
+                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn-hero group"
+              >
+                📖 Биография
+                <span className="ml-2 transition-transform group-hover:scale-110">👤</span>
               </Button>
               <Button 
                 onClick={() => document.getElementById('jewelry')?.scrollIntoView({ behavior: 'smooth' })}

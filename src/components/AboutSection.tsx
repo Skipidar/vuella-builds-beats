@@ -1,6 +1,6 @@
 export const AboutSection = () => {
   return (
-    <section className="py-20 bg-background">
+    <section id="about" className="py-20 bg-background">
       <div className="section-container">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-4">
